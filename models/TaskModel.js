@@ -54,7 +54,12 @@ const taskSchema = new Schema({
         min: 0,
         max: 9999999999.99, // 10 digits before the decimal and 2 digits after the decimal
         default: null,
-    }
+    },
+    // Reference to SubTask model
+    subtasks: [{
+        type: Schema.Types.ObjectId,
+        ref: 'SubTask',
+    }],
 });
 
 const Task = mongoose.model('Task', taskSchema);

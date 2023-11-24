@@ -6,10 +6,11 @@ exports.getAllTasks = async (req, res, next) => {
     try {
         // Retrieve all tasks with associated foreign data
         const tasks = await Task.find()
-            .populate('task_status_id', 'id name')
-            .populate('created_by', 'id name email hourly_rate')
-            .populate('assigned_to', 'id name email hourly_rate')
-            .populate('parent_id', 'title description start_date end_date task_status_id created_by assigned_to parent_id task_hours unpaid_task_hours paid_task_hours')
+            .populate('task_status_id')
+            .populate('created_by')
+            .populate('assigned_to')
+            .populate('parent_id')
+            .populate('subtasks')
             ;
 
         res.status(200).json({
