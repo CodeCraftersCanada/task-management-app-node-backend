@@ -18,7 +18,10 @@ const userSchema = new Schema({
 		ref: "UserType",
 		required: true,
 	},
-	hourly_rate: String,
+	hourly_rate: {
+		type: Number,
+		default: 0,
+	},
 	filename: {
 		type: String,
 	},

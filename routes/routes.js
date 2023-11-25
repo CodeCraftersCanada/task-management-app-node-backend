@@ -16,7 +16,7 @@ router.post("/login", userController.loginUser);
 
 /**** USERS ROUTE ***/
 router.get("/user", verifyToken, userController.getUsers);
-router.put("user/:userId", verifyToken, userController.editUser);
+router.put("/user/:userId", verifyToken, userController.editUser);
 
 /**** TASK ROUTE ***/
 router.get("/tasks", verifyToken, taskController.getAllTasks);
