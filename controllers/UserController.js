@@ -3,8 +3,12 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 exports.getUsers = (req, res, next) => {
+
+	let query = {};
+	query.user_type_id = "2";
+
 	// return array of existing posts
-	User.find().then((foundUsers) => {
+	User.find(query).then((foundUsers) => {
 		res.json({
 			status: true,
 			message: "All users",
@@ -26,6 +30,7 @@ exports.createUser = (req, res, next) => {
 		password: password,
 		hourly_rate: hourly_rate,
 		user_type_id: 2,
+		filename: "avatar-icon.jpeg"
 	});
 
 	// save the instance to the database
