@@ -18,7 +18,7 @@ exports.getAllTasks = async (req, res, next) => {
 				query.$or.push({ assigned_to: assignedToId });
 			}
 		}
-		if (taskStatusId) {
+		if (taskStatusId > 0) {
 			query.task_status_id = taskStatusId;
 		}
 

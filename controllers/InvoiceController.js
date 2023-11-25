@@ -17,17 +17,17 @@ exports.getAllInvoices = async (req, res, next) => {
 		}
 
 		// Retrieve all tasks with associated foreign data
-		const tasks = await Invoice.find(query)
+		const invoices = await Invoice.find(query)
 			.populate("created_by")
 			.populate("paid_to")
 			.populate("task_id");
 		res.status(200).json({
 			status: true,
 			message: "All invoices with associated data",
-			tasks: tasks,
+			invoices: invoices,
 		});
 	} catch (error) {
-		console.error("Error getting tasks:", error);
+		console.error("Error getting invoices:", error);
 		res.status(500).json({
 			status: false,
 			message: "Internal Server Error",

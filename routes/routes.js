@@ -38,7 +38,7 @@ router.put(
 
 /**** INVOICES TOKEN ***/
 router.get("/invoice", verifyToken, invoiceController.getAllInvoices);
-router.post("/invoice", verifyToken, invoiceController.createInvoice);
+router.post("/invoice", invoiceController.createInvoice);
 
 // export the router
 module.exports = router;
