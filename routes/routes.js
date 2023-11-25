@@ -27,9 +27,13 @@ router.put("/tasks/:taskId", verifyToken, taskController.editTask);
 router.get("/taskSatus", taskStatusController.getAllTaskStatus);
 
 /**** SUB TASK ROUTE ***/
-router.post("/subTask", subTaskStatusController.createSubTask);
-router.get("/subTask", subTaskStatusController.getAllSubTasks);
-router.put("/subTasks/:subtaskId", subTaskStatusController.editSubTask);
+router.post("/subTask", verifyToken, subTaskStatusController.createSubTask);
+router.get("/subTask", verifyToken, subTaskStatusController.getAllSubTasks);
+router.put(
+	"/subTask/:subtaskId",
+	verifyToken,
+	subTaskStatusController.editSubTask
+);
 
 // export the router
 module.exports = router;
