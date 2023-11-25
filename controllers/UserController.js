@@ -1,5 +1,6 @@
 const User = require("../models/UserModel");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 exports.getUsers = (req, res, next) => {
 	// return array of existing posts
@@ -69,10 +70,21 @@ exports.loginUser = (req, res, next) => {
 				}
 
 				// Passwords match, authentication successful
+				// Create a token
+				const token = jwt.sign(
+					{
+						userId: foundUser._id,
+						email: foundUser.email,
+					},
+					process.env.JWT_SECRET, // Secret key from your environment variables
+					{ expiresIn: "24h" } // Token expiration time
+				);
+
 				res.status(200).json({
 					status: true,
 					message: "Authentication successful!",
 					user: foundUser,
+					token: token, // Include the token in the response
 				});
 			});
 		})

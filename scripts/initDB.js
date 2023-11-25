@@ -58,9 +58,9 @@ hashPasswords()
 
 //adding task status
 const defaultStatus = [
-	{ name: "New" },
-	{ name: "In Progress" },
-	{ name: "Complete" },
+	{ _id: 1, name: "New" },
+	{ _id: 2, name: "In Progress" },
+	{ _id: 3, name: "Complete" },
 ];
 
 Status.insertMany(defaultStatus)
