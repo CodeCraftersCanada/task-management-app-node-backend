@@ -17,7 +17,7 @@ router.post("/login", userController.loginUser);
 
 /**** USERS ROUTE ***/
 router.get("/user", verifyToken, userController.getUsers);
-router.put("user/:userId", verifyToken, userController.editUser);
+router.put("/user/:userId", verifyToken, userController.editUser);
 
 /**** TASK ROUTE ***/
 router.get("/tasks", verifyToken, taskController.getAllTasks);
@@ -28,9 +28,13 @@ router.put("/tasks/:taskId", verifyToken, taskController.editTask);
 router.get("/taskSatus", taskStatusController.getAllTaskStatus);
 
 /**** SUB TASK ROUTE ***/
-router.post("/subTask", subTaskStatusController.createSubTask);
-router.get("/subTask", subTaskStatusController.getAllSubTasks);
-router.put("/subTasks/:subtaskId", subTaskStatusController.editSubTask);
+router.post("/subTask", verifyToken, subTaskStatusController.createSubTask);
+router.get("/subTask", verifyToken, subTaskStatusController.getAllSubTasks);
+router.put(
+	"/subTask/:subtaskId",
+	verifyToken,
+	subTaskStatusController.editSubTask
+);
 
 /**** INVOICES TOKEN ***/
 router.get("/invoice", verifyToken, invoiceController.getAllInvoices);
