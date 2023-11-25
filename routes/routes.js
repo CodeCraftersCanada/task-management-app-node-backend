@@ -9,6 +9,7 @@ const userController = require("../controllers/UserController");
 const taskController = require("../controllers/TaskController");
 const taskStatusController = require("../controllers/TaskStatusController");
 const subTaskStatusController = require("../controllers/SubTaskController");
+const invoiceController = require("../controllers/InvoiceController");
 
 /**** AUTHENTICATION ROUTE ***/
 router.post("/signup", userController.createUser);
@@ -30,6 +31,10 @@ router.get("/taskSatus", taskStatusController.getAllTaskStatus);
 router.post("/subTask", subTaskStatusController.createSubTask);
 router.get("/subTask", subTaskStatusController.getAllSubTasks);
 router.put("/subTasks/:subtaskId", subTaskStatusController.editSubTask);
+
+/**** INVOICES TOKEN ***/
+router.get("/invoice", verifyToken, invoiceController.getAllInvoices);
+router.post("/invoice", verifyToken, invoiceController.createInvoice);
 
 // export the router
 module.exports = router;
